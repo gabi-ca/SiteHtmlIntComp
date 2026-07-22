@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Pacifico');
+
+:root {
+    --rosa: #e91e8c;
+    --escuro: rgba(74, 18, 51, 0.85);
+    --fundo: rgba(255, 255, 255, 0.82);
+    --texto: #4a1233;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--texto);
+    background-image: url('wallpaper.png');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: 480px;
+    position: relative;
+}
+
+/* Brilhinhos animados nas laterais */
+
+.sparkles {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 70px;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.sparkles-left {
+    left: 0;
+}
+
+.sparkles-right {
+    right: 0;
+}
+
+.sparkle {
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: brilhar 6s ease-in-out infinite;
+}
+
+.sparkles-left .sparkle:nth-child(1) { left: 20%; top: 80%; animation-delay: 0s; }
+.sparkles-left .sparkle:nth-child(2) { left: 50%; top: 45%; animation-delay: 2s; }
+.sparkles-left .sparkle:nth-child(3) { left: 25%; top: 15%; animation-delay: 4s; }
+
+.sparkles-right .sparkle:nth-child(1) { left: 25%; top: 80%; animation-delay: 1s; }
+.sparkles-right .sparkle:nth-child(2) { left: 50%; top: 45%; animation-delay: 3s; }
+.sparkles-right .sparkle:nth-child(3) { left: 20%; top: 15%; animation-delay: 5s; }
+
+@keyframes brilhar {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-25px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+/* Player de música */
+
+.music-player {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--fundo);
+    border: 2px solid #ffd6ea;
+    border-radius: 999px;
+    padding: 6px 14px 6px 12px;
+}
+
+.music-player span {
+    font-size: 1.1rem;
+}
+
+.music-player audio {
+    height: 32px;
+    max-width: 220px;
+}
+
+/* Cabeçalho e navegação */
+
+header {
+    background: var(--escuro);
+    text-align: center;
+    padding: 34px 90px 22px;
+    position: relative;
+    z-index: 5;
+}
+
+header h1 {
+    margin: 0;
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: 2.6rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 15;
+    background: var(--escuro);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 90px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+nav a {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: background 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    background: var(--rosa);
+    border-color: var(--rosa);
+}
+
+/* Conteúdo principal */
+
+main {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 36px auto;
+    padding: 0 90px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 26px;
+}
+
+main > section {
+    background: var(--fundo);
+    border-radius: 16px;
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+main > section:first-of-type {
+    grid-column: 1 / -1;
+    background: #ffd6ea;
+}
+
+main > section h2 {
+    margin-top: 0;
+    color: #b3116b;
+    font-size: 1.3rem;
+}
+
+main > section:first-of-type h2 {
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: #7a2f8a;
+}
+
+main > section p {
+    line-height: 1.7;
+    font-size: 0.97rem;
+}
+
+main > section h2 a {
+    color: #b3116b;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+}
+
+main > section h2 a:hover {
+    color: var(--rosa);
+    border-color: #ffd76a;
+}
+
+main > section img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    margin: 6px auto 0;
+    border-radius: 12px;
+}
+
+/* Rodapé */
+
+footer {
+    position: relative;
+    z-index: 2;
+    background: var(--escuro);
+    color: #fff;
+    text-align: center;
+    padding: 16px 20px;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+
+@media (max-width: 720px) {
+    header,
+    nav ul,
+    main {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .music-player {
+        top: auto;
+        bottom: 12px;
+        right: 12px;
+    }
+
+    .music-player audio {
+        max-width: 150px;
+    }
+}
